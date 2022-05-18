@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Add Part</title>
+</head>
+<body>
+  <form action="/inventory/part/add" method="POST">
+    <label>Part Number</label><br />
+    <input type="text" name="Number"> <br />
+	<label>Part Name</label><br />
+	<input type="text" name="Name"> <br />
+	<label>Quantity</label><br />
+	<input type="text" name="Quantity"> <br />
+    <button type="submit">Submit</button>
+  </form>
+	<input type="button" value="List" onclick="redirect()"/>
+	<script>
+		function redirect(){
+		var uri = "http://localhost:3000/inventory/part/list";
+		window.location.href = uri;
+		}
+	</script>
+</body>
+</html>

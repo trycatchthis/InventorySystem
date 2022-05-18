@@ -1,0 +1,46 @@
+
+<html>
+<head>
+    <title>Parts List</title>
+    <meta charset="utf-8">
+	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+</head>
+<body>
+    <div class="container">
+        <table id="table" data-height="460">
+            <tr>
+                <td>Part Number</td>
+                <td>Part Name</td>
+                <td>Quantity</td>
+            </tr>
+		</table>
+    </div>
+	<input type="button" value="Back" onclick="redirect()"/>
+
+	<script>
+	$(document).ready(function(){
+		$.getJSON('http://localhost:3000/inventory/part/data', function(data){	
+			for (i in data) {
+				console.log(data[i]);
+				$('#table').last().append('<tr><td>' + data[i].Number + '</td>' + "/" + '<td>' + data[i].Name + '</td>' + "/" + '<td>' + data[i].Quantity + '</td></tr>');
+			}
+			
+  			/*
+			console.log(data);
+			$(data).each(function(index, element){
+				console.log(index); 
+				console.log(element);
+				$('#table').append('<tr><td>' + index + '</td><td>' + element['Number'] + '</td>' + "/" + '<td>' + element['Name'] + '</td>' + "/" + '<td>' + element['Quantity'] + '</td></tr></table>')
+			})
+			*/
+		})
+	});
+	
+	function redirect(){
+		var uri = "http://localhost:3000/inventory/part/add";
+		window.location.href = uri;
+		}
+	</script>
+	
+</body>
+</html>
